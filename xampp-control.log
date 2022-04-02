@@ -1,0 +1,60 @@
+3:38:59 PM  [main] 	Initializing Control Panel
+3:38:59 PM  [main] 	Windows Version:  Enterprise  64-bit
+3:38:59 PM  [main] 	XAMPP Version: 8.1.4
+3:38:59 PM  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+3:38:59 PM  [main] 	You are not running with administrator rights! This will work for
+3:38:59 PM  [main] 	most application stuff but whenever you do something with services
+3:38:59 PM  [main] 	there will be a security dialogue or things will break! So think 
+3:38:59 PM  [main] 	about running this application with administrator rights!
+3:38:59 PM  [main] 	XAMPP Installation Directory: "c:\xampp\"
+3:38:59 PM  [main] 	Checking for prerequisites
+3:39:00 PM  [main] 	All prerequisites found
+3:39:00 PM  [main] 	Initializing Modules
+3:39:00 PM  [Tomcat] 	Problem detected: Tomcat Not Found!
+3:39:00 PM  [Tomcat] 	Disabling Tomcat buttons
+3:39:00 PM  [Tomcat] 	Run this program from your XAMPP root directory!
+3:39:00 PM  [main] 	Starting Check-Timer
+3:39:00 PM  [main] 	Control Panel Ready
+3:39:07 PM  [Apache] 	Attempting to start Apache app...
+3:39:07 PM  [Apache] 	Status change detected: running
+3:39:40 PM  [Apache] 	Attempting to stop Apache (PID: 6544)
+3:39:40 PM  [Apache] 	Attempting to stop Apache (PID: 6812)
+3:39:40 PM  [Apache] 	Status change detected: stopped
+3:39:41 PM  [Apache] 	Attempting to start Apache app...
+3:39:41 PM  [Apache] 	Status change detected: running
+3:43:11 PM  [mysql] 	Attempting to start MySQL app...
+3:43:11 PM  [mysql] 	Status change detected: running
+4:43:30 PM  [main] 	Deinitializing Modules
+4:43:30 PM  [main] 	Deinitializing Control Panel
+
+4:43:18 PM  [main] 	Initializing Control Panel
+4:43:18 PM  [main] 	Windows Version:  Enterprise  64-bit
+4:43:18 PM  [main] 	XAMPP Version: 8.1.4
+4:43:18 PM  [main] 	Control Panel Version: 3.3.0  [ Compiled: Apr 6th 2021 ]
+4:43:18 PM  [main] 	You are not running with administrator rights! This will work for
+4:43:18 PM  [main] 	most application stuff but whenever you do something with services
+4:43:18 PM  [main] 	there will be a security dialogue or things will break! So think 
+4:43:18 PM  [main] 	about running this application with administrator rights!
+4:43:18 PM  [main] 	XAMPP Installation Directory: "c:\xampp\"
+4:43:18 PM  [main] 	Checking for prerequisites
+4:43:18 PM  [main] 	All prerequisites found
+4:43:18 PM  [main] 	Initializing Modules
+4:43:18 PM  [Apache] 	XAMPP Apache is already running on port 443
+4:43:18 PM  [mysql] 	XAMPP MySQL is already running on port 3306
+4:43:18 PM  [Tomcat] 	Problem detected: Tomcat Not Found!
+4:43:18 PM  [Tomcat] 	Disabling Tomcat buttons
+4:43:18 PM  [Tomcat] 	Run this program from your XAMPP root directory!
+4:43:18 PM  [main] 	Starting Check-Timer
+4:43:18 PM  [main] 	Control Panel Ready
+4:43:20 PM  [Apache] 	Attempting to stop Apache (PID: 1264)
+4:43:20 PM  [Apache] 	Attempting to stop Apache (PID: 3500)
+4:43:21 PM  [Apache] 	Status change detected: stopped
+4:43:21 PM  [mysql] 	Attempting to stop MySQL app...
+4:43:22 PM  [mysql] 	Status change detected: stopped
+4:43:26 PM  [mysql] 	Attempting to start MySQL app...
+4:43:26 PM  [mysql] 	Status change detected: running
+4:43:27 PM  [Apache] 	Attempting to start Apache app...
+4:43:27 PM  [Apache] 	Status change detected: running
+5:31:31 PM  [main] 	Deinitializing Modules
+5:31:31 PM  [main] 	Deinitializing Control Panel
+
