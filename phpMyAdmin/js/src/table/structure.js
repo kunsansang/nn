@@ -91,24 +91,12 @@ AJAX.registerOnload('table/structure.js', function () {
                         .show();
                     Functions.highlightSql($('#page_content'));
                     $('.result_query .alert-primary').remove();
-                    if (typeof data.structure_refresh_route !== 'string') {
-                        // Do not reload the form when the code below freshly filled it
-                        reloadFieldForm();
-                    }
+                    reloadFieldForm();
                     $form.remove();
                     Functions.ajaxRemoveMessage($msg);
                     Functions.initSlider();
                     Navigation.reload();
-                    if (typeof data.structure_refresh_route === 'string') {
-                        // Fetch the table structure right after adding a new column
-                        $.get(data.structure_refresh_route, function (data) {
-                            if (typeof data.success !== 'undefined' && data.success === true) {
-                                $('#page_content').append(data.message).show();
-                            }
-                        });
-                    } else {
-                        CommonActions.refreshMain('index.php?route=/table/structure');
-                    }
+                    CommonActions.refreshMain('index.php?route=/table/structure');
                 } else {
                     Functions.ajaxShowMessage(data.error, false);
                 }
@@ -195,7 +183,7 @@ AJAX.registerOnload('table/structure.js', function () {
         /**
          * @var question    String containing the question to be asked for confirmation
          */
-        var question = Functions.sprintf(Messages.strDoYouReally, 'ALTER TABLE `' + currTableName + '` DROP `' + currColumnName + '`;');
+        var question = Functions.sprintf(Messages.strDoYouReally, 'ALTER TABLE `' + Functions.escapeHtml(currTableName) + '` DROP `' + Functions.escapeHtml(currColumnName) + '`;');
         var $thisAnchor = $(this);
         $thisAnchor.confirm(question, $thisAnchor.attr('href'), function (url) {
             var $msg = Functions.ajaxShowMessage(Messages.strDroppingColumn, false);

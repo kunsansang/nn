@@ -27,9 +27,10 @@ if (@file_exists(CONFIG_FILE) && ! $cfg['DBG']['demo']) {
     Core::fatalError(__('Configuration already exists, setup is disabled!'));
 }
 
-$page = 'index';
-if (isset($_GET['page']) && in_array($_GET['page'], ['form', 'config', 'servers'], true)) {
-    $page = $_GET['page'];
+$page = Core::isValid($_GET['page'], 'scalar') ? (string) $_GET['page'] : '';
+$page = preg_replace('/[^a-z]/', '', $page);
+if ($page === '') {
+    $page = 'index';
 }
 
 Core::noCacheHeader();
@@ -55,7 +56,7 @@ if ($page === 'config') {
 
 if ($page === 'servers') {
     $controller = new ServersController($GLOBALS['ConfigFile'], new Template());
-    if (isset($_GET['mode']) && $_GET['mode'] === 'remove' && ($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
+    if (isset($_GET['mode']) && $_GET['mode'] === 'remove' && $_SERVER['REQUEST_METHOD'] === 'POST') {
         $controller->destroy([
             'id' => $_GET['id'] ?? null,
         ]);
@@ -76,5 +77,6 @@ if ($page === 'servers') {
 $controller = new HomeController($GLOBALS['ConfigFile'], new Template());
 echo $controller->index([
     'formset' => $_GET['formset'] ?? null,
+    'action_done' => $_GET['action_done'] ?? null,
     'version_check' => $_GET['version_check'] ?? null,
 ]);

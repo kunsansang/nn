@@ -13,7 +13,6 @@ use PhpMyAdmin\SqlParser\Component;
 use PhpMyAdmin\SqlParser\Parser;
 use PhpMyAdmin\SqlParser\Token;
 use PhpMyAdmin\SqlParser\TokensList;
-
 use function implode;
 use function is_array;
 use function trim;
@@ -22,8 +21,6 @@ use function trim;
  * Parses the create definition of a partition.
  *
  * Used for parsing `CREATE TABLE` statement.
- *
- * @final
  */
 class PartitionDefinition extends Component
 {

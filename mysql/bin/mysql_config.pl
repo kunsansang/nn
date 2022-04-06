@@ -27,7 +27,7 @@
 #  All unrecognized arguments to this script are passed to mysqld.
 #
 #  NOTE: This script will only be used on Windows until solved how to
-#        handle -lmariadb  ws2_32 advapi32 kernel32 shlwapi crypt32 secur32   and other strings inserted that might contain
+#        handle -lmariadb  ws2_32 advapi32 kernel32 shlwapi crypt32 secur32 zlib   and other strings inserted that might contain
 #        several arguments, possibly with spaces in them.
 #
 #  NOTE: This script was deliberately written to be as close to the shell
@@ -53,7 +53,7 @@ my $cwd = cwd();
 my $basedir;
 
 my $socket  = '/tmp/mysql.sock';
-my $version = '10.4.24';
+my $version = '10.4.19';
 
 sub which
 {
@@ -199,9 +199,9 @@ my $flags;
 $flags->{libs} =
   [@ldflags,@lib_opts,'','','',''];
 $flags->{libs_r} =
-  [@ldflags,@lib_r_opts,'','-lmariadb  ws2_32 advapi32 kernel32 shlwapi crypt32 secur32  ',''];
+  [@ldflags,@lib_r_opts,'','-lmariadb  ws2_32 advapi32 kernel32 shlwapi crypt32 secur32 zlib  ',''];
 $flags->{embedded_libs} =
-  [@ldflags,@lib_e_opts,'','','-lmariadb  ws2_32 advapi32 kernel32 shlwapi crypt32 secur32  ','',''];
+  [@ldflags,@lib_e_opts,'','','-lmariadb  ws2_32 advapi32 kernel32 shlwapi crypt32 secur32 zlib  ','',''];
 
 $flags->{include} = ["-I$pkgincludedir"];
 $flags->{cflags}  = [@{$flags->{include}},split(" ",'')];

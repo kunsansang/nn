@@ -239,15 +239,14 @@ class ImportOds extends ImportPlugin
     /**
      * Get value
      *
-     * @param SimpleXMLElement $cell_attrs Cell attributes
-     * @param SimpleXMLElement $text       Texts
+     * @param array $cell_attrs Cell attributes
+     * @param array $text       Texts
      *
      * @return float|string
      */
     protected function getValue($cell_attrs, $text)
     {
-        if (isset($_REQUEST['ods_recognize_percentages'])
-            && $_REQUEST['ods_recognize_percentages']
+        if ($_REQUEST['ods_recognize_percentages']
             && ! strcmp(
                 'percentage',
                 (string) $cell_attrs['value-type']
@@ -256,8 +255,7 @@ class ImportOds extends ImportPlugin
             return (float) $cell_attrs['value'];
         }
 
-        if (isset($_REQUEST['ods_recognize_currency'])
-            && $_REQUEST['ods_recognize_currency']
+        if ($_REQUEST['ods_recognize_currency']
             && ! strcmp('currency', (string) $cell_attrs['value-type'])
         ) {
             return (float) $cell_attrs['value'];
@@ -266,14 +264,7 @@ class ImportOds extends ImportPlugin
         /* We need to concatenate all paragraphs */
         $values = [];
         foreach ($text as $paragraph) {
-            // Maybe a text node has the content ? (email, url, ...)
-            // Example: <text:a ... xlink:href="mailto:contact@example.org">test@example.fr</text:a>
-            $paragraphValue = $paragraph->__toString();
-            if ($paragraphValue === '' && isset($paragraph->{'a'})) {
-                $values[] = $paragraph->{'a'}->__toString();
-                continue;
-            }
-            $values[] = $paragraphValue;
+            $values[] = (string) $paragraph;
         }
 
         return implode("\n", $values);
@@ -385,7 +376,7 @@ class ImportOds extends ImportPlugin
             if (! $col_names_in_first_row) {
                 if ($_REQUEST['ods_empty_rows'] ?? false) {
                     foreach ($tempRow as $cell) {
-                        if (strcmp('NULL', (string) $cell)) {
+                        if (strcmp('NULL', $cell)) {
                             $tempRows[] = $tempRow;
                             break;
                         }

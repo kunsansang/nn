@@ -415,7 +415,7 @@ class Export
             $doNotSaveItOver = $_POST['quick_export_onserver_overwrite'] !== 'saveitover';
         }
 
-        $save_filename = Util::userDir((string) ($GLOBALS['cfg']['SaveDir'] ?? ''))
+        $save_filename = Util::userDir($GLOBALS['cfg']['SaveDir'])
             . preg_replace('@[/\\\\]@', '_', $filename);
 
         if (@file_exists($save_filename)
@@ -565,18 +565,16 @@ class Export
          */
         $back_button = '<p id="export_back_button">[ <a href="';
         if ($export_type === 'server') {
-            $back_button .= Url::getFromRoute('/server/export') . '" data-post="' . Url::getCommon([], '', false);
+            $back_button .= Url::getFromRoute('/server/export') . '" data-post="' . Url::getCommon([], '');
         } elseif ($export_type === 'database') {
-            $back_button .= Url::getFromRoute('/database/export') . '" data-post="' . Url::getCommon(
-                ['db' => $db],
-                '',
-                false
-            );
+            $back_button .= Url::getFromRoute('/database/export') . '" data-post="' . Url::getCommon(['db' => $db], '');
         } else {
             $back_button .= Url::getFromRoute('/table/export') . '" data-post="' . Url::getCommon(
-                ['db' => $db, 'table' => $table],
-                '',
-                false
+                [
+                    'db' => $db,
+                    'table' => $table,
+                ],
+                ''
             );
         }
 

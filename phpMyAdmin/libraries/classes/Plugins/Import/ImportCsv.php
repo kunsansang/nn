@@ -16,8 +16,6 @@ use PhpMyAdmin\Properties\Options\Items\BoolPropertyItem;
 use PhpMyAdmin\Properties\Options\Items\NumberPropertyItem;
 use PhpMyAdmin\Properties\Options\Items\TextPropertyItem;
 use PhpMyAdmin\Util;
-
-use function array_shift;
 use function array_splice;
 use function basename;
 use function count;
@@ -574,12 +572,6 @@ class ImportCsv extends AbstractImportCsv
             }
 
             $col_names = $this->getColumnNames($col_names, $max_cols, $rows);
-
-            /* Remove the first row if it contains the column names */
-            if (isset($_REQUEST['csv_col_names'])) {
-                array_shift($rows);
-            }
-
             $tbl_name = $this->getTableNameFromImport((string) $db);
 
             $tables[] = [

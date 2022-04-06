@@ -12,7 +12,6 @@ use PhpMyAdmin\SqlParser\Components\ParameterDefinition;
 use PhpMyAdmin\SqlParser\Lexer;
 use PhpMyAdmin\SqlParser\Parser;
 use PhpMyAdmin\SqlParser\Statements\CreateStatement;
-
 use function implode;
 use function is_string;
 

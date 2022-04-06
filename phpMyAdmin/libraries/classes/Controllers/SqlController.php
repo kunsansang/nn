@@ -261,20 +261,9 @@ class SqlController extends AbstractController
         $column = $_POST['column'];
         $curr_value = $_POST['curr_value'];
         $values = $this->sql->getValuesForColumn($db, $table, $column);
-
-        if ($values === null) {
-            $this->response->addJSON('message', __('Error in processing request'));
-            $this->response->setRequestStatus(false);
-
-            return;
-        }
-
-        // Converts characters of $curr_value to HTML entities.
-        $convertedCurrentValue = htmlentities($curr_value, ENT_COMPAT, 'UTF-8');
-
         $dropdown = $this->template->render('sql/enum_column_dropdown', [
             'values' => $values,
-            'selected_values' => [$convertedCurrentValue],
+            'selected_values' => [$curr_value],
         ]);
 
         $this->response->addJSON('dropdown', $dropdown);
@@ -295,13 +284,6 @@ class SqlController extends AbstractController
         $whereClause = $_POST['where_clause'] ?? null;
 
         $values = $this->sql->getValuesForColumn($db, $table, $column);
-
-        if ($values === null) {
-            $this->response->addJSON('message', __('Error in processing request'));
-            $this->response->setRequestStatus(false);
-
-            return;
-        }
 
         // If the $currentValue was truncated, we should fetch the correct full values from the table.
         if ($fullValues && ! empty($whereClause)) {

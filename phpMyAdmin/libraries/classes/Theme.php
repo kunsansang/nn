@@ -18,7 +18,6 @@ use function sprintf;
 use function trigger_error;
 use function trim;
 use function version_compare;
-use const DIRECTORY_SEPARATOR;
 
 /**
  * handles theme
@@ -57,16 +56,10 @@ class Theme
     private $fsPath = '';
 
     /**
-     * @var string image path as an URL
+     * @var string image path
      * @access protected
      */
     public $imgPath = '';
-
-    /**
-     * @var string image path on the file-system
-     * @access protected
-     */
-    public $imgPathFs = '';
 
     /**
      * @var int last modification time for info file
@@ -202,21 +195,16 @@ class Theme
     public function checkImgPath()
     {
         // try current theme first
-        if (is_dir($this->getFsPath() . 'img' . DIRECTORY_SEPARATOR)) {
+        if (is_dir($this->getFsPath() . 'img/')) {
             $this->setImgPath($this->getPath() . '/img/');
-            $this->setImgPathFs($this->getFsPath() . 'img' . DIRECTORY_SEPARATOR);
 
             return true;
         }
 
         // try fallback theme
-        $fallbackFsPathThemeDir = ThemeManager::getThemesFsDir() . ThemeManager::FALLBACK_THEME
-                                  . DIRECTORY_SEPARATOR . 'img' . DIRECTORY_SEPARATOR;
-        if (is_dir($fallbackFsPathThemeDir)) {
-            $fallbackUrl = ThemeManager::getThemesDir() . ThemeManager::FALLBACK_THEME
-                        . '/img/';
-            $this->setImgPath($fallbackUrl);
-            $this->setImgPathFs($fallbackFsPathThemeDir);
+        $fallback = ThemeManager::getThemesDir() . ThemeManager::FALLBACK_THEME . '/img/';
+        if (is_dir(ThemeManager::getThemesFsDir() . ThemeManager::FALLBACK_THEME . '/img/')) {
+            $this->setImgPath($fallback);
 
             return true;
         }
@@ -375,7 +363,7 @@ class Theme
     /**
      * Sets path to images for the theme
      *
-     * @param string $path path to images for this theme as an URL path
+     * @param string $path path to images for this theme
      *
      * @return void
      *
@@ -384,16 +372,6 @@ class Theme
     public function setImgPath($path)
     {
         $this->imgPath = $path;
-    }
-
-    /**
-     * Sets path to images for the theme
-     *
-     * @param string $path file-system path to images for this theme
-     */
-    public function setImgPathFs(string $path): void
-    {
-        $this->imgPathFs = $path;
     }
 
     /**
@@ -414,7 +392,7 @@ class Theme
             return $this->imgPath;
         }
 
-        if (is_readable($this->imgPathFs . $file)) {
+        if (is_readable($this->imgPath . $file)) {
             return $this->imgPath . $file;
         }
 

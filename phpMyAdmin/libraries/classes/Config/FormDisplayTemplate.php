@@ -358,7 +358,7 @@ class FormDisplayTemplate
         if ($hasErrors) {
             $htmlOutput .= "\n        <dl class=\"inline_errors\">";
             foreach ($opts['errors'] as $error) {
-                $htmlOutput .= '<dd>' . $error . '</dd>';
+                $htmlOutput .= '<dd>' . htmlspecialchars($error) . '</dd>';
             }
             $htmlOutput .= '</dl>';
         }

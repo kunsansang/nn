@@ -16,7 +16,6 @@ use function imagestring;
 use function json_encode;
 use function mb_strlen;
 use function mb_substr;
-use function round;
 use function trim;
 
 /**
@@ -116,16 +115,7 @@ class GisMultiPoint extends GisGeometry
                 continue;
             }
 
-            imagearc(
-                $image,
-                (int) round($point[0]),
-                (int) round($point[1]),
-                7,
-                7,
-                0,
-                360,
-                $color
-            );
+            imagearc($image, (int) $point[0], (int) $point[1], 7, 7, 0, 360, $color);
         }
         // print label for each point
         if ((isset($label) && trim($label) != '')
@@ -134,8 +124,8 @@ class GisMultiPoint extends GisGeometry
             imagestring(
                 $image,
                 1,
-                (int) round($points_arr[0][0]),
-                (int) round($points_arr[0][1]),
+                $points_arr[0][0],
+                $points_arr[0][1],
                 trim($label),
                 $black
             );
@@ -292,9 +282,9 @@ class GisMultiPoint extends GisGeometry
             . 'fill: fill,'
             . 'stroke: stroke';
 
-        if (trim($label) !== '') {
+        if ($label) {
             $text_style = [
-                'text' => trim($label),
+                'text' => $label,
                 'offsetY' => -9,
             ];
             $result .= ',text: new ol.style.Text(' . json_encode($text_style) . ')';

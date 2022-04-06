@@ -676,7 +676,7 @@ class Types
             $this->getFunctionsClass('CHAR'),
             $this->getFunctionsClass('NUMBER'),
             $this->getFunctionsClass('DATE'),
-            $this->getFunctionsClass('SPATIAL')
+            $this->getFunctionsClass('UUID')
         );
         sort($ret);
 

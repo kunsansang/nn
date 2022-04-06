@@ -16,6 +16,7 @@ use PhpMyAdmin\Util;
 use function array_key_exists;
 use function array_keys;
 use function array_values;
+use function htmlspecialchars;
 use function mb_strtoupper;
 use function md5;
 use function strtoupper;
@@ -321,11 +322,14 @@ final class RelationController extends AbstractController
         } else {
             $columnList = $table_obj->getIndexedColumns(false, false);
         }
-        if ($GLOBALS['cfg']['NaturalOrder']) {
-            usort($columnList, 'strnatcasecmp');
+        $columns = [];
+        foreach ($columnList as $column) {
+            $columns[] = htmlspecialchars($column);
         }
-
-        $this->response->addJSON('columns', $columnList);
+        if ($GLOBALS['cfg']['NaturalOrder']) {
+            usort($columns, 'strnatcasecmp');
+        }
+        $this->response->addJSON('columns', $columns);
 
         // @todo should be: $server->db($db)->table($table)->primary()
         $primary = Index::getPrimary($foreignTable, $_POST['foreignDb']);
@@ -362,7 +366,7 @@ final class RelationController extends AbstractController
                     continue;
                 }
 
-                $tables[] = $row['Name'];
+                $tables[] = htmlspecialchars($row['Name']);
             }
         } else {
             $query = 'SHOW TABLES FROM '
@@ -373,7 +377,7 @@ final class RelationController extends AbstractController
                 DatabaseInterface::QUERY_STORE
             );
             while ($row = $this->dbi->fetchArray($tables_rs)) {
-                $tables[] = $row[0];
+                $tables[] = htmlspecialchars($row[0]);
             }
         }
         if ($GLOBALS['cfg']['NaturalOrder']) {

@@ -14,8 +14,6 @@ use PhpMyAdmin\SqlParser\TokensList;
 
 /**
  * `LIMIT` keyword parser.
- *
- * @final
  */
 class Limit extends Component
 {
@@ -107,7 +105,10 @@ class Limit extends Component
         }
 
         if ($offset) {
-            $parser->error('An offset was expected.', $list->tokens[$list->idx - 1]);
+            $parser->error(
+                'An offset was expected.',
+                $list->tokens[$list->idx - 1]
+            );
         }
 
         --$list->idx;

@@ -8,7 +8,6 @@ declare(strict_types=1);
 namespace PhpMyAdmin\SqlParser;
 
 use PhpMyAdmin\MoTranslator\Loader;
-
 use function class_exists;
 
 class Translator
@@ -48,12 +47,10 @@ class Translator
             self::$loader->bindtextdomain('sqlparser', __DIR__ . '/../locale/');
         }
 
-        if (self::$translator !== null) {
-            return;
+        if (self::$translator === null) {
+            // Get translator
+            self::$translator = self::$loader->getTranslator();
         }
-
-        // Get translator
-        self::$translator = self::$loader->getTranslator();
     }
 
     /**

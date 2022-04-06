@@ -277,15 +277,22 @@ class BrowseForeigners
     private function getDescriptionAndTitle(string $description): array
     {
         if (mb_strlen($description) <= $this->limitChars) {
+            $description = htmlspecialchars(
+                $description
+            );
             $descriptionTitle = '';
         } else {
-            $descriptionTitle = $description;
-            $description = mb_substr(
-                $description,
-                0,
-                $this->limitChars
-            )
-            . '...';
+            $descriptionTitle = htmlspecialchars(
+                $description
+            );
+            $description = htmlspecialchars(
+                mb_substr(
+                    $description,
+                    0,
+                    $this->limitChars
+                )
+                . '...'
+            );
         }
 
         return [

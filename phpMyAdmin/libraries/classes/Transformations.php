@@ -108,6 +108,7 @@ class Transformations
      * @return array    array[mimetype], array[transformation]
      *
      * @access public
+     * @staticvar array   mimetypes
      */
     public function getAvailableMimeTypes()
     {
@@ -125,7 +126,7 @@ class Transformations
         ];
 
         foreach ($sub_dirs as $sd => $prefix) {
-            $handle = opendir(ROOT_PATH . 'libraries/classes/Plugins/Transformations/' . $sd);
+            $handle = opendir('libraries/classes/Plugins/Transformations/' . $sd);
 
             if (! $handle) {
                 $stack[$prefix . 'transformation'] = [];

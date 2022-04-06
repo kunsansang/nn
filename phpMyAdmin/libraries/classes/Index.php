@@ -254,16 +254,13 @@ class Index
      */
     public function addColumn(array $params)
     {
-        $key = $params['Column_name'] ?? $params['Expression'] ?? '';
-        if (isset($params['Expression'])) {
-            // The Expression only does not make the key unique, add a sequence number
-            $key .= $params['Seq_in_index'];
-        }
-        if (strlen($key) <= 0) {
+        if (! isset($params['Column_name'])
+            || strlen($params['Column_name']) <= 0
+        ) {
             return;
         }
 
-        $this->columns[$key] = new IndexColumn($params);
+        $this->columns[$params['Column_name']] = new IndexColumn($params);
     }
 
     /**
@@ -367,7 +364,6 @@ class Index
         if (isset($params['Key_block_size'])) {
             $this->keyBlockSize = $params['Key_block_size'];
         }
-
         if (! isset($params['Parser'])) {
             return;
         }

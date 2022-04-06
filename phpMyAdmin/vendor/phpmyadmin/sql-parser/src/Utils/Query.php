@@ -33,7 +33,6 @@ use PhpMyAdmin\SqlParser\Statements\TruncateStatement;
 use PhpMyAdmin\SqlParser\Statements\UpdateStatement;
 use PhpMyAdmin\SqlParser\Token;
 use PhpMyAdmin\SqlParser\TokensList;
-
 use function array_flip;
 use function array_keys;
 use function count;
@@ -244,7 +243,9 @@ class Query
             $flags['is_group'] = true;
         }
 
-        if (! empty($statement->into) && ($statement->into->type === 'OUTFILE')) {
+        if (! empty($statement->into)
+            && ($statement->into->type === 'OUTFILE')
+        ) {
             $flags['is_export'] = true;
         }
 
@@ -264,14 +265,14 @@ class Query
                 }
             }
 
-            if (empty($expr->subquery)) {
-                continue;
+            if (! empty($expr->subquery)) {
+                $flags['is_subquery'] = true;
             }
-
-            $flags['is_subquery'] = true;
         }
 
-        if (! empty($statement->procedure) && ($statement->procedure->name === 'ANALYSE')) {
+        if (! empty($statement->procedure)
+            && ($statement->procedure->name === 'ANALYSE')
+        ) {
             $flags['is_analyse'] = true;
         }
 
@@ -341,7 +342,9 @@ class Query
             $flags['querytype'] = 'DROP';
             $flags['reload'] = true;
 
-            if ($statement->options->has('DATABASE') || $statement->options->has('SCHEMA')) {
+            if ($statement->options->has('DATABASE')
+                || $statement->options->has('SCHEMA')
+            ) {
                 $flags['drop_database'] = true;
             }
         } elseif ($statement instanceof ExplainStatement) {
@@ -372,8 +375,7 @@ class Query
             $flags['querytype'] = 'SET';
         }
 
-        if (
-            ($statement instanceof SelectStatement)
+        if (($statement instanceof SelectStatement)
             || ($statement instanceof UpdateStatement)
             || ($statement instanceof DeleteStatement)
         ) {
@@ -426,14 +428,13 @@ class Query
             // Finding tables' aliases and their associated real names.
             $tableAliases = [];
             foreach ($statement->from as $expr) {
-                if (! isset($expr->table, $expr->alias) || ($expr->table === '') || ($expr->alias === '')) {
-                    continue;
+                if (isset($expr->table, $expr->alias) && ($expr->table !== '') && ($expr->alias !== '')
+                ) {
+                    $tableAliases[$expr->alias] = [
+                        $expr->table,
+                        $expr->database ?? null,
+                    ];
                 }
-
-                $tableAliases[$expr->alias] = [
-                    $expr->table,
-                    $expr->database ?? null,
-                ];
             }
 
             // Trying to find selected tables only from the select expression.
@@ -464,20 +465,16 @@ class Query
             // extracted from the FROM clause.
             if (empty($ret['select_tables'])) {
                 foreach ($statement->from as $expr) {
-                    if (! isset($expr->table) || ($expr->table === '')) {
-                        continue;
+                    if (isset($expr->table) && ($expr->table !== '')) {
+                        $arr = [
+                            $expr->table,
+                            isset($expr->database) && ($expr->database !== '') ?
+                                $expr->database : null,
+                        ];
+                        if (! in_array($arr, $ret['select_tables'])) {
+                            $ret['select_tables'][] = $arr;
+                        }
                     }
-
-                    $arr = [
-                        $expr->table,
-                        isset($expr->database) && ($expr->database !== '') ?
-                            $expr->database : null,
-                    ];
-                    if (in_array($arr, $ret['select_tables'])) {
-                        continue;
-                    }
-
-                    $ret['select_tables'][] = $arr;
                 }
             }
         }
@@ -496,13 +493,19 @@ class Query
     {
         $expressions = [];
 
-        if (($statement instanceof InsertStatement) || ($statement instanceof ReplaceStatement)) {
+        if (($statement instanceof InsertStatement)
+            || ($statement instanceof ReplaceStatement)
+        ) {
             $expressions = [$statement->into->dest];
         } elseif ($statement instanceof UpdateStatement) {
             $expressions = $statement->tables;
-        } elseif (($statement instanceof SelectStatement) || ($statement instanceof DeleteStatement)) {
+        } elseif (($statement instanceof SelectStatement)
+            || ($statement instanceof DeleteStatement)
+        ) {
             $expressions = $statement->from;
-        } elseif (($statement instanceof AlterStatement) || ($statement instanceof TruncateStatement)) {
+        } elseif (($statement instanceof AlterStatement)
+            || ($statement instanceof TruncateStatement)
+        ) {
             $expressions = [$statement->table];
         } elseif ($statement instanceof DropStatement) {
             if (! $statement->options->has('TABLE')) {
@@ -519,13 +522,11 @@ class Query
 
         $ret = [];
         foreach ($expressions as $expr) {
-            if (empty($expr->table)) {
-                continue;
+            if (! empty($expr->table)) {
+                $expr->expr = null; // Force rebuild.
+                $expr->alias = null; // Aliases are not required.
+                $ret[] = Expression::build($expr);
             }
-
-            $expr->expr = null; // Force rebuild.
-            $expr->alias = null; // Aliases are not required.
-            $ret[] = Expression::build($expr);
         }
 
         return $ret;
@@ -642,8 +643,7 @@ class Query
 
             if ($brackets === 0) {
                 // Checking if the section was changed.
-                if (
-                    ($token->type === Token::TYPE_KEYWORD)
+                if (($token->type === Token::TYPE_KEYWORD)
                     && isset($clauses[$token->keyword])
                     && ($clauses[$token->keyword] >= $currIdx)
                 ) {
@@ -656,11 +656,9 @@ class Query
                 }
             }
 
-            if (($firstClauseIdx > $currIdx) || ($currIdx > $lastClauseIdx)) {
-                continue;
+            if (($firstClauseIdx <= $currIdx) && ($currIdx <= $lastClauseIdx)) {
+                $ret .= $token->token;
             }
-
-            $ret .= $token->token;
         }
 
         return trim($ret);
@@ -731,7 +729,12 @@ class Query
 
         // If there is only one clause, `replaceClause()` should be used.
         if ($count === 1) {
-            return static::replaceClause($statement, $list, $ops[0][0], $ops[0][1]);
+            return static::replaceClause(
+                $statement,
+                $list,
+                $ops[0][0],
+                $ops[0][1]
+            );
         }
 
         // Adding everything before first replacement.
@@ -742,11 +745,9 @@ class Query
             $ret .= $clause[1] . ' ';
 
             // Adding everything between this and next replacement.
-            if ($i + 1 === $count) {
-                continue;
+            if ($i + 1 !== $count) {
+                $ret .= static::getClause($statement, $list, $clause[0], $ops[$i + 1][0]) . ' ';
             }
-
-            $ret .= static::getClause($statement, $list, $clause[0], $ops[$i + 1][0]) . ' ';
         }
 
         // Adding everything after the last replacement.
@@ -863,20 +864,15 @@ class Query
                 }
             }
 
-            if ($brackets !== 0) {
-                continue;
-            }
-
-            if (
-                ($token->type === Token::TYPE_KEYWORD)
-                && isset($clauses[$token->keyword])
-                && ($clause === $token->keyword)
-            ) {
-                return $i;
-            }
-
-            if ($token->keyword === 'UNION') {
-                return -1;
+            if ($brackets === 0) {
+                if (($token->type === Token::TYPE_KEYWORD)
+                    && isset($clauses[$token->keyword])
+                    && ($clause === $token->keyword)
+                ) {
+                    return $i;
+                } elseif ($token->keyword === 'UNION') {
+                    return -1;
+                }
             }
         }
 

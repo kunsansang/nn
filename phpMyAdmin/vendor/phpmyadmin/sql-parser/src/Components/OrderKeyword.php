@@ -11,14 +11,11 @@ use PhpMyAdmin\SqlParser\Component;
 use PhpMyAdmin\SqlParser\Parser;
 use PhpMyAdmin\SqlParser\Token;
 use PhpMyAdmin\SqlParser\TokensList;
-
 use function implode;
 use function is_array;
 
 /**
  * `ORDER BY` keyword parser.
- *
- * @final
  */
 class OrderKeyword extends Component
 {
@@ -95,12 +92,13 @@ class OrderKeyword extends Component
                 $expr->expr = Expression::parse($parser, $list);
                 $state = 1;
             } elseif ($state === 1) {
-                if (
-                    ($token->type === Token::TYPE_KEYWORD)
+                if (($token->type === Token::TYPE_KEYWORD)
                     && (($token->keyword === 'ASC') || ($token->keyword === 'DESC'))
                 ) {
                     $expr->type = $token->keyword;
-                } elseif (($token->type === Token::TYPE_OPERATOR) && ($token->value === ',')) {
+                } elseif (($token->type === Token::TYPE_OPERATOR)
+                    && ($token->value === ',')
+                ) {
                     if (! empty($expr->expr)) {
                         $ret[] = $expr;
                     }

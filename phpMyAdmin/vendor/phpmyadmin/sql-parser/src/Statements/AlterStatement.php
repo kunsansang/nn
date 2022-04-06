@@ -14,7 +14,6 @@ use PhpMyAdmin\SqlParser\Parser;
 use PhpMyAdmin\SqlParser\Statement;
 use PhpMyAdmin\SqlParser\Token;
 use PhpMyAdmin\SqlParser\TokensList;
-
 use function implode;
 
 /**
@@ -53,7 +52,6 @@ class AlterStatement extends Statement
         'SERVER' => 3,
         'TABLE' => 3,
         'TABLESPACE' => 3,
-        'USER' => 3,
         'VIEW' => 3,
     ];
 
@@ -64,7 +62,11 @@ class AlterStatement extends Statement
     public function parse(Parser $parser, TokensList $list)
     {
         ++$list->idx; // Skipping `ALTER`.
-        $this->options = OptionsArray::parse($parser, $list, static::$OPTIONS);
+        $this->options = OptionsArray::parse(
+            $parser,
+            $list,
+            static::$OPTIONS
+        );
         ++$list->idx;
 
         // Parsing affected table.
@@ -117,8 +119,6 @@ class AlterStatement extends Statement
                     $options = AlterOperation::$TABLE_OPTIONS;
                 } elseif ($this->options->has('VIEW')) {
                     $options = AlterOperation::$VIEW_OPTIONS;
-                } elseif ($this->options->has('USER')) {
-                    $options = AlterOperation::$USER_OPTIONS;
                 }
 
                 $this->altered[] = AlterOperation::parse($parser, $list, $options);

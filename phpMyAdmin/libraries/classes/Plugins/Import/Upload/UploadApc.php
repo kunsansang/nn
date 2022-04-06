@@ -11,7 +11,6 @@ use PhpMyAdmin\Import\Ajax;
 use PhpMyAdmin\Plugins\UploadInterface;
 use function array_key_exists;
 use function trim;
-use function apc_fetch;
 
 /**
  * Implementation for the APC extension

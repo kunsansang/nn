@@ -11,7 +11,6 @@ use PhpMyAdmin\SqlParser\Component;
 use PhpMyAdmin\SqlParser\Parser;
 use PhpMyAdmin\SqlParser\Token;
 use PhpMyAdmin\SqlParser\TokensList;
-
 use function implode;
 use function is_array;
 use function strlen;
@@ -19,8 +18,6 @@ use function trim;
 
 /**
  * Parses an array.
- *
- * @final
  */
 class ArrayObj extends Component
 {
@@ -101,13 +98,18 @@ class ArrayObj extends Component
             }
 
             // Skipping whitespaces and comments.
-            if (($token->type === Token::TYPE_WHITESPACE) || ($token->type === Token::TYPE_COMMENT)) {
+            if (($token->type === Token::TYPE_WHITESPACE)
+                || ($token->type === Token::TYPE_COMMENT)
+            ) {
                 $lastRaw .= $token->token;
                 $lastValue = trim($lastValue) . ' ';
                 continue;
             }
 
-            if (($brackets === 0) && (($token->type !== Token::TYPE_OPERATOR) || ($token->value !== '('))) {
+            if (($brackets === 0)
+                && (($token->type !== Token::TYPE_OPERATOR)
+                || ($token->value !== '('))
+            ) {
                 $parser->error('An opening bracket was expected.', $token);
                 break;
             }
@@ -157,7 +159,9 @@ class ArrayObj extends Component
         //      [a,] => ['a', '']
         //      [a]  => ['a']
         $lastRaw = trim($lastRaw);
-        if (empty($options['type']) && ((strlen($lastRaw) > 0) || ($isCommaLast))) {
+        if (empty($options['type'])
+            && ((strlen($lastRaw) > 0) || ($isCommaLast))
+        ) {
             $ret->raw[] = $lastRaw;
             $ret->values[] = trim($lastValue);
         }
@@ -175,9 +179,7 @@ class ArrayObj extends Component
     {
         if (is_array($component)) {
             return implode(', ', $component);
-        }
-
-        if (! empty($component->raw)) {
+        } elseif (! empty($component->raw)) {
             return '(' . implode(', ', $component->raw) . ')';
         }
 

@@ -71,7 +71,10 @@
         <div id="openlayersmap"></div>
         <input type="hidden" id="themeImagePath" value="{{ theme_image_path }}">
         <script language="javascript" type="text/javascript">
-            {{ draw_ol|raw }}
+            function drawOpenLayers()
+            {
+                {{ draw_ol|raw }}
+            }
         </script>
     </fieldset>
 </div>

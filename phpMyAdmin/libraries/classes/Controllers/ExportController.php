@@ -260,7 +260,7 @@ final class ExportController extends AbstractController
             $quick_export = false;
         }
 
-        if (isset($_POST['output_format']) && $_POST['output_format'] === 'astext') {
+        if ($_POST['output_format'] === 'astext') {
             $asfile = false;
         } else {
             $asfile = true;

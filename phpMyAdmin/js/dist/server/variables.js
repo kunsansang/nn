@@ -45,7 +45,6 @@ AJAX.registerOnload('server/variables.js', function () {
       var $msgbox = Functions.ajaxShowMessage(Messages.strProcessingRequest);
       $.post('index.php?route=/server/variables/set/' + encodeURIComponent(varName), {
         'ajax_request': true,
-        'server': CommonParams.get('server'),
         'varValue': $valueCell.find('input').val()
       }, function (data) {
         if (data.success) {
@@ -71,8 +70,7 @@ AJAX.registerOnload('server/variables.js', function () {
       return false;
     });
     $.get('index.php?route=/server/variables/get/' + encodeURIComponent(varName), {
-      'ajax_request': true,
-      'server': CommonParams.get('server')
+      'ajax_request': true
     }, function (data) {
       if (typeof data !== 'undefined' && data.success === true) {
         var $links = $('<div></div>').append($myCancelLink).append('&nbsp;&nbsp;&nbsp;').append($mySaveLink);

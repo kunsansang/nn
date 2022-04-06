@@ -25,7 +25,6 @@ use function is_array;
 use function ob_get_clean;
 use function ob_start;
 use function str_replace;
-use function strtolower;
 use function urlencode;
 
 /**
@@ -406,12 +405,12 @@ class PrivilegesController extends AbstractController
         if (isset($_GET['adduser']) || $_add_user_error === true) {
             // Add user
             $this->response->addHTML(
-                $serverPrivileges->getHtmlForAddUser(Util::escapeMysqlWildcards($dbname ?? ''))
+                $serverPrivileges->getHtmlForAddUser(($dbname ?? ''))
             );
         } elseif (isset($_GET['checkprivsdb'])) {
             if (isset($_GET['checkprivstable'])) {
                 $this->response->addHTML($tableController->index([
-                    'checkprivsdb' => strtolower($_GET['checkprivsdb']),
+                    'checkprivsdb' => $_GET['checkprivsdb'],
                     'checkprivstable' => $_GET['checkprivstable'],
                 ]));
             } elseif ($this->response->isAjax() === true && empty($_REQUEST['ajax_page_request'])) {
@@ -421,7 +420,7 @@ class PrivilegesController extends AbstractController
                 return;
             } else {
                 $this->response->addHTML($databaseController->index([
-                    'checkprivsdb' => strtolower($_GET['checkprivsdb']),
+                    'checkprivsdb' => $_GET['checkprivsdb'],
                 ]));
             }
         } else {
@@ -453,7 +452,7 @@ class PrivilegesController extends AbstractController
                         $hostname ?? '',
                         $dbname,
                         $routinename,
-                        Util::escapeMysqlWildcards($url_dbname ?? '')
+                        $url_dbname ?? ''
                     )
                 );
             } else {
@@ -466,7 +465,7 @@ class PrivilegesController extends AbstractController
                 $this->response->addHTML(
                     $serverPrivileges->getHtmlForUserProperties(
                         $dbname_is_wildcard,
-                        Util::escapeMysqlWildcards($url_dbname ?? ''),
+                        $url_dbname ?? '',
                         $username,
                         $hostname ?? '',
                         $dbname ?? '',

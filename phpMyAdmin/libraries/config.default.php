@@ -607,13 +607,6 @@ $cfg['Servers'][$i]['tracking_add_drop_table'] = true;
 $cfg['Servers'][$i]['tracking_add_drop_database'] = true;
 
 /**
- * Whether to show or hide detailed MySQL/MariaDB connection errors on the login page.
- *
- * @global bool $cfg['Servers'][$i]['hide_connection_errors']
- */
-$cfg['Servers'][$i]['hide_connection_errors'] = false;
-
-/**
  * Default server (0 = no default server)
  *
  * If you have more than one server configured, you can set $cfg['ServerDefault']
@@ -793,12 +786,7 @@ $cfg['Confirm'] = true;
 /**
  * sets SameSite attribute of the Set-Cookie HTTP response header
  *
- * Valid values are:
- *    - Lax
- *    - Strict
- *    - None
- *
- * @global string $cfg['CookieSameSite']
+ * @global boolean $cfg['CookieSameSite']
  */
  $cfg['CookieSameSite'] = 'Strict';
 
@@ -845,20 +833,6 @@ $cfg['UseDbSearch'] = true;
  * @global boolean $cfg['IgnoreMultiSubmitErrors']
  */
 $cfg['IgnoreMultiSubmitErrors'] = false;
-
-/**
- * Define whether phpMyAdmin will encrypt sensitive data from the URL query string.
- *
- * @global bool $cfg['URLQueryEncryption']
- */
-$cfg['URLQueryEncryption'] = false;
-
-/**
- * A secret key used to encrypt/decrypt the URL query string. Should be 32 bytes long.
- *
- * @global string $cfg['URLQueryEncryptionSecretKey']
- */
-$cfg['URLQueryEncryptionSecretKey'] = '';
 
 /**
  * allow login to any user entered server in cookie based authentication
@@ -2543,7 +2517,7 @@ $cfg['CharTextareaCols'] = 40;
  *
  * @global integer $cfg['CharTextareaRows']
  */
-$cfg['CharTextareaRows'] = 7;
+$cfg['CharTextareaRows'] = 2;
 
 /**
  * Max field data length in browse mode for all non-numeric fields

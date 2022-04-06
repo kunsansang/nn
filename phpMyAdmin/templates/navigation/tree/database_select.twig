@@ -4,10 +4,11 @@
   {{ list_navigator|raw }}
 
   <div id="pma_navigation_db_select">
-    <form action="{{ database_url }}" method="get">
+    <form action="{{ url('/') }}">
       {{ get_hidden_fields({'server': server}) }}
 
-      <select name="db" class="hide" id="navi_db_select" aria-label="{% trans 'Databases' %}">
+      <select name="db" class="hide" id="navi_db_select">
+        <option value="" dir="{{ text_dir }}">{% trans 'Databases' %}…</option>
         {% for option in options %}
           <option value="{{ option.name }}" title="{{ option.title }}"
             data-apath="{{ option.data.apath }}"

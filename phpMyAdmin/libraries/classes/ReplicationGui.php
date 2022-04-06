@@ -140,7 +140,7 @@ class ReplicationGui
             }
 
             $urlParams['sr_slave_control_parm'] = 'IO_THREAD';
-            $slaveControlIoLink = Url::getCommon($urlParams, '', false);
+            $slaveControlIoLink = Url::getCommon($urlParams, '');
 
             if ($serverSlaveReplication[0]['Slave_SQL_Running'] === 'No') {
                 $urlParams['sr_slave_action'] = 'start';
@@ -149,7 +149,7 @@ class ReplicationGui
             }
 
             $urlParams['sr_slave_control_parm'] = 'SQL_THREAD';
-            $slaveControlSqlLink = Url::getCommon($urlParams, '', false);
+            $slaveControlSqlLink = Url::getCommon($urlParams, '');
 
             if ($serverSlaveReplication[0]['Slave_IO_Running'] === 'No'
                 || $serverSlaveReplication[0]['Slave_SQL_Running'] === 'No'
@@ -160,21 +160,21 @@ class ReplicationGui
             }
 
             $urlParams['sr_slave_control_parm'] = null;
-            $slaveControlFullLink = Url::getCommon($urlParams, '', false);
+            $slaveControlFullLink = Url::getCommon($urlParams, '');
 
             $urlParams['sr_slave_action'] = 'reset';
-            $slaveControlResetLink = Url::getCommon($urlParams, '', false);
+            $slaveControlResetLink = Url::getCommon($urlParams, '');
 
             $urlParams = $GLOBALS['url_params'];
             $urlParams['sr_take_action'] = true;
             $urlParams['sr_slave_skip_error'] = true;
-            $slaveSkipErrorLink = Url::getCommon($urlParams, '', false);
+            $slaveSkipErrorLink = Url::getCommon($urlParams, '');
 
             $urlParams = $GLOBALS['url_params'];
             $urlParams['sl_configure'] = true;
             $urlParams['repl_clear_scr'] = true;
 
-            $reconfigureMasterLink =  Url::getCommon($urlParams, '', false);
+            $reconfigureMasterLink =  Url::getCommon($urlParams, '');
 
             $slaveStatusTable = $this->getHtmlForReplicationStatusTable('slave', true, false);
 

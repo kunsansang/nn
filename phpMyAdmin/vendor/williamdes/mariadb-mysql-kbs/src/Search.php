@@ -1,17 +1,16 @@
 <?php
-
 declare(strict_types = 1);
-
 namespace Williamdes\MariaDBMySQLKBS;
 
-use stdClass;
+use \stdClass;
 
 class Search
 {
+
     /**
      * Loaded data
      *
-     * @var stdClass
+     * @var mixed
      */
     public static $data;
 
@@ -32,7 +31,7 @@ class Search
      *
      * @var string
      */
-    public static $DATA_DIR = __DIR__ . self::DS . '..' . self::DS . 'dist' . self::DS;
+    public static $DATA_DIR = __DIR__ . self::DS . ".." . self::DS . "dist" . self::DS;
 
     /**
      * Load data from disk
@@ -43,21 +42,13 @@ class Search
     public static function loadData(): void
     {
         if (Search::$loaded === false) {
-            $filePath = Search::$DATA_DIR . 'merged-ultraslim.json';
-            if (! is_file($filePath)) {
-                throw new KBException($filePath . ' does not exist !');
-            }
-            $contents = file_get_contents($filePath);
+            $filePath = Search::$DATA_DIR."merged-ultraslim.json";
+            $contents = @file_get_contents($filePath);
             if ($contents === false) {
-                throw new KBException($filePath . ' does not exist !');
+                throw new KBException("$filePath does not exist !");
             }
-            $decodedData = json_decode($contents);
-            if ($decodedData instanceof stdClass) {
-                Search::$data   = $decodedData;
-                Search::$loaded = true;
-                return;
-            }
-            throw new KBException($filePath . ' could not be JSON decoded !');
+            Search::$data   = json_decode($contents);
+            Search::$loaded = true;
         }
     }
 
@@ -69,11 +60,8 @@ class Search
      */
     public static function loadTestData(SlimData $slimData): void
     {
-        $decodedData = json_decode((string) json_encode($slimData));
-        if ($decodedData instanceof stdClass) {
-            Search::$data   = $decodedData;
-            Search::$loaded = true;
-        }
+        Search::$data   = json_decode((string) json_encode($slimData));
+        Search::$loaded = true;
     }
 
     /**
@@ -91,20 +79,20 @@ class Search
         if (isset($kbEntries->a)) {
             foreach ($kbEntries->a as $kbEntry) {
                 if ($type === Search::ANY) {
-                    return Search::$data->urls[$kbEntry->u] . '#' . $kbEntry->a;
+                    return Search::$data->urls[$kbEntry->u]."#".$kbEntry->a;
                 } elseif ($type === Search::MYSQL) {
                     if ($kbEntry->t === Search::MYSQL) {
-                        return Search::$data->urls[$kbEntry->u] . '#' . $kbEntry->a;
+                        return Search::$data->urls[$kbEntry->u]."#".$kbEntry->a;
                     }
                 } elseif ($type === Search::MARIADB) {
                     if ($kbEntry->t === Search::MARIADB) {
-                        return Search::$data->urls[$kbEntry->u] . '#' . $kbEntry->a;
+                        return Search::$data->urls[$kbEntry->u]."#".$kbEntry->a;
                     }
                 }
             }
         }
 
-        throw new KBException($name . ' does not exist for this type of documentation !');
+        throw new KBException("$name does not exist for this type of documentation !");
     }
 
     /**
@@ -120,7 +108,7 @@ class Search
         if (isset(Search::$data->vars->{$name})) {
             return Search::$data->vars->{$name};
         } else {
-            throw new KBException($name . ' does not exist !');
+            throw new KBException("$name does not exist !");
         }
     }
 
@@ -138,7 +126,7 @@ class Search
         if (isset($kbEntry->t)) {
             return Search::$data->varTypes->{$kbEntry->t};
         } else {
-            throw new KBException($name . ' does have a known type !');
+            throw new KBException("$name does have a known type !");
         }
     }
 
@@ -171,7 +159,7 @@ class Search
     public static function getVariablesWithDynamic(bool $dynamic): array
     {
         self::loadData();
-        $staticVars = [];
+        $staticVars = array();
         foreach (Search::$data->vars as $name => $var) {
             if (isset($var->d)) {
                 if ($var->d === $dynamic) {

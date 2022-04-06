@@ -11,7 +11,7 @@ use FastRoute\DataGenerator\GroupCountBased as DataGeneratorGroupCountBased;
 use FastRoute\Dispatcher\GroupCountBased as DispatcherGroupCountBased;
 use FastRoute\RouteCollector;
 use function htmlspecialchars;
-use function is_string;
+use function mb_strlen;
 use function rawurldecode;
 use function sprintf;
 use function is_writable;
@@ -70,7 +70,7 @@ class Routing
         // If skip cache is enabled, do not try to read the file
         // If no cache skipping then read it and use it
         if (! $skipCache && file_exists(self::ROUTES_CACHE_FILE)) {
-            /** @psalm-suppress MissingFile, UnresolvableInclude */
+            /** @psalm-suppress MissingFile */
             $dispatchData = require self::ROUTES_CACHE_FILE;
             if (! is_array($dispatchData)) {
                 throw new RuntimeException('Invalid cache file "' . self::ROUTES_CACHE_FILE . '"');
@@ -124,25 +124,21 @@ class Routing
         return $couldWrite !== false;
     }
 
-    /**
-     * @psalm-return non-empty-string
-     */
     public static function getCurrentRoute(): string
     {
+        /** @var string $route */
         $route = $_GET['route'] ?? $_POST['route'] ?? '/';
-        if (! is_string($route) || $route === '') {
-            $route = '/';
-        }
 
         /**
          * See FAQ 1.34.
          *
          * @see https://docs.phpmyadmin.net/en/latest/faq.html#faq1-34
          */
-        $db = isset($_GET['db']) && is_string($_GET['db']) ? $_GET['db'] : '';
-        if ($route === '/' && $db !== '') {
-            $table = isset($_GET['table']) && is_string($_GET['table']) ? $_GET['table'] : '';
-            $route = $table === '' ? '/database/structure' : '/sql';
+        if (($route === '/' || $route === '') && isset($_GET['db']) && mb_strlen($_GET['db']) !== 0) {
+            $route = '/database/structure';
+            if (isset($_GET['table']) && mb_strlen($_GET['table']) !== 0) {
+                $route = '/sql';
+            }
         }
 
         return $route;
@@ -157,7 +153,7 @@ class Routing
         ContainerInterface $container
     ): void {
         $routeInfo = $dispatcher->dispatch(
-            $_SERVER['REQUEST_METHOD'] ?? 'GET',
+            $_SERVER['REQUEST_METHOD'],
             rawurldecode($route)
         );
 

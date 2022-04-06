@@ -11,7 +11,6 @@ use PhpMyAdmin\SqlParser\Component;
 use PhpMyAdmin\SqlParser\Parser;
 use PhpMyAdmin\SqlParser\Token;
 use PhpMyAdmin\SqlParser\TokensList;
-
 use function implode;
 use function strtolower;
 use function strtoupper;
@@ -19,8 +18,6 @@ use function trim;
 
 /**
  * Parses a data type.
- *
- * @final
  */
 class DataType extends Component
 {

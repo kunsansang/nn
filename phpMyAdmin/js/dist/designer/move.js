@@ -104,9 +104,7 @@ if (isIe) {
 }
 
 DesignerMove.mouseDown = function (e) {
-  // eslint-disable-next-line compat/compat
-  globX = isIe ? e.clientX + document.body.scrollLeft : e.pageX; // eslint-disable-next-line compat/compat
-
+  globX = isIe ? e.clientX + document.body.scrollLeft : e.pageX;
   globY = isIe ? e.clientY + document.body.scrollTop : e.pageY;
 
   if (e.target.tagName === 'SPAN') {
@@ -128,11 +126,9 @@ DesignerMove.mouseDown = function (e) {
 DesignerMove.mouseMove = function (e) {
   if (e.preventDefault) {
     e.preventDefault();
-  } // eslint-disable-next-line compat/compat
+  }
 
-
-  var newDx = isIe ? e.clientX + document.body.scrollLeft : e.pageX; // eslint-disable-next-line compat/compat
-
+  var newDx = isIe ? e.clientX + document.body.scrollLeft : e.pageX;
   var newDy = isIe ? e.clientY + document.body.scrollTop : e.pageY;
   var deltaX = globX - newDx;
   var deltaY = globY - newDy;
@@ -1404,7 +1400,6 @@ DesignerMove.newRelation = function () {
       Functions.ajaxShowMessage(data.error, false);
     } else {
       Functions.ajaxRemoveMessage($msgbox);
-      Functions.ajaxShowMessage(data.message);
       DesignerMove.loadPage(selectedPage);
     }
   }); // end $.post()
@@ -1528,10 +1523,8 @@ DesignerMove.canvasClick = function (id, event) {
   var K;
   var key;
   var key2;
-  var key3; // eslint-disable-next-line compat/compat
-
-  var localX = isIe ? event.clientX + document.body.scrollLeft : event.pageX; // eslint-disable-next-line compat/compat
-
+  var key3;
+  var localX = isIe ? event.clientX + document.body.scrollLeft : event.pageX;
   var localY = isIe ? event.clientY + document.body.scrollTop : event.pageY;
   localX -= $('#osn_tab').offset().left;
   localY -= $('#osn_tab').offset().top;
@@ -1636,7 +1629,6 @@ DesignerMove.updRelation = function () {
       Functions.ajaxShowMessage(data.error, false);
     } else {
       Functions.ajaxRemoveMessage($msgbox);
-      Functions.ajaxShowMessage(data.message);
       DesignerMove.loadPage(selectedPage);
     }
   }); // end $.post()
@@ -1744,9 +1736,7 @@ DesignerMove.generalScroll = function () {
   // if (timeoutId)
   clearTimeout(timeoutId);
   timeoutId = setTimeout(function () {
-    // eslint-disable-next-line compat/compat
-    document.getElementById('top_menu').style.left = document.body.scrollLeft + 'px'; // eslint-disable-next-line compat/compat
-
+    document.getElementById('top_menu').style.left = document.body.scrollLeft + 'px';
     document.getElementById('top_menu').style.top = document.body.scrollTop + 'px';
   }, 200);
 }; // max/min all tables

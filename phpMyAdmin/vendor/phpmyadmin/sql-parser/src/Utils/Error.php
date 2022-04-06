@@ -11,7 +11,6 @@ use PhpMyAdmin\SqlParser\Exceptions\LexerException;
 use PhpMyAdmin\SqlParser\Exceptions\ParserException;
 use PhpMyAdmin\SqlParser\Lexer;
 use PhpMyAdmin\SqlParser\Parser;
-
 use function htmlspecialchars;
 use function sprintf;
 

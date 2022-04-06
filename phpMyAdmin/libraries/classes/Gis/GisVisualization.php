@@ -211,8 +211,8 @@ class GisVisualization
             $spatialSrid = 'ST_SRID';
         }
 
-        // If MYSQL version >= 8.0.1 override default axis order
-        if ($this->userSpecifiedSettings['mysqlVersion'] >= 80001 && ! $isMariaDb) {
+        // If MYSQL version >= 8.1 override default axis order
+        if ($this->userSpecifiedSettings['mysqlVersion'] >= 80010 && ! $isMariaDb) {
             $axisOrder = ', \'axis-order=long-lat\'';
         }
 
@@ -485,8 +485,7 @@ class GisVisualization
     {
         $this->init();
         $scale_data = $this->scaleDataSet($this->data);
-        $output = 'function drawOpenLayers() {'
-            . 'if (typeof ol !== "undefined") {'
+        $output = 'if (typeof ol !== "undefined") {'
             . 'var olCss = "js/vendor/openlayers/theme/ol.css";'
             . '$(\'head\').append(\'<link rel="stylesheet" type="text/css" href=\'+olCss+\'>\');'
             . 'var vectorLayer = new ol.source.Vector({});'
@@ -511,9 +510,6 @@ class GisVisualization
             . 'new ol.control.Attribution]'
             . '});';
         $output .= $this->prepareDataSet($this->data, $scale_data, 'ol', '')
-            . 'return map;'
-            . '}'
-            . 'return undefined;'
             . '}';
 
         return $output;

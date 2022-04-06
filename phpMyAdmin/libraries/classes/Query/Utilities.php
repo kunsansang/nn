@@ -110,7 +110,8 @@ class Utilities
             } else {
                 /**
                  * InnoDB constraints, see
-                 * https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html
+                 * https://dev.mysql.com/doc/refman/5.0/en/
+                 * innodb-foreign-key-constraints.html
                  */
                 $error .= ' - ' . $error_message .
                     ' (<a href="' .

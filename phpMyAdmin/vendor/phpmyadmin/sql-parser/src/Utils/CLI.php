@@ -10,7 +10,6 @@ namespace PhpMyAdmin\SqlParser\Utils;
 use PhpMyAdmin\SqlParser\Context;
 use PhpMyAdmin\SqlParser\Lexer;
 use PhpMyAdmin\SqlParser\Parser;
-
 use function count;
 use function getopt;
 use function implode;
@@ -19,7 +18,6 @@ use function rtrim;
 use function stream_get_contents;
 use function stream_select;
 use function var_export;
-
 use const STDIN;
 
 /**
@@ -37,11 +35,9 @@ class CLI
     {
         foreach ($longopts as $value) {
             $value = rtrim($value, ':');
-            if (! isset($params[$value])) {
-                continue;
+            if (isset($params[$value])) {
+                $params[$value[0]] = $params[$value];
             }
-
-            $params[$value[0]] = $params[$value];
         }
     }
 
@@ -76,7 +72,10 @@ class CLI
             'format:',
             'ansi',
         ];
-        $params = $this->getopt('hq:f:a', $longopts);
+        $params = $this->getopt(
+            'hq:f:a',
+            $longopts
+        );
         if ($params === false) {
             return false;
         }
@@ -122,7 +121,6 @@ class CLI
         if (isset($params['a'])) {
             Context::setMode('ANSI_QUOTES');
         }
-
         if (isset($params['q'])) {
             echo Formatter::format(
                 $params['q'],
@@ -159,7 +157,10 @@ class CLI
             'context:',
             'ansi',
         ];
-        $params = $this->getopt('hq:c:a', $longopts);
+        $params = $this->getopt(
+            'hq:c:a',
+            $longopts
+        );
         $this->mergeLongOpts($params, $longopts);
 
         return $params;
@@ -192,7 +193,6 @@ class CLI
                 $params['q'] = $stdIn;
             }
         }
-
         if (isset($params['a'])) {
             Context::setMode('ANSI_QUOTES');
         }
@@ -237,7 +237,10 @@ class CLI
             'query:',
             'ansi',
         ];
-        $params = $this->getopt('hq:a', $longopts);
+        $params = $this->getopt(
+            'hq:a',
+            $longopts
+        );
         $this->mergeLongOpts($params, $longopts);
 
         return $params;
@@ -270,7 +273,6 @@ class CLI
         if (isset($params['a'])) {
             Context::setMode('ANSI_QUOTES');
         }
-
         if (isset($params['q'])) {
             $lexer = new Lexer($params['q'], false);
             foreach ($lexer->list->tokens as $idx => $token) {

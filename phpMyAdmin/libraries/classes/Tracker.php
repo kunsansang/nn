@@ -857,6 +857,8 @@ class Tracker
         if (! (substr($query, -1) === ';')) {
             $query .= ";\n";
         }
+        // Get some information about query
+        $result = self::parseQuery($query);
 
         // Get database name
         $dbname = trim($GLOBALS['db'] ?? '', '`');
@@ -865,9 +867,6 @@ class Tracker
         if (empty($dbname)) {
             return;
         }
-
-        // Get some information about query
-        $result = self::parseQuery($query);
 
         // If we found a valid statement
         if (! isset($result['identifier'])) {
