@@ -32,7 +32,3 @@
 	<main id="main" class="<?php flatsome_main_classes(); ?>">
 		
 		<?php
-if ( function_exists('yoast_breadcrumb') ) {
-  yoast_breadcrumb( '<p id="breadcrumbs">','</p>' );
-}
-?>
