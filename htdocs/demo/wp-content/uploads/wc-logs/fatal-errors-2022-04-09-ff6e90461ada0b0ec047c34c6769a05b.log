@@ -1,0 +1,19 @@
+2022-04-09T13:41:47+00:00 CRITICAL Uncaught Error: Call to a member function get_status() on bool in C:\xampp\htdocs\demo\wp-content\plugins\shopengine\modules\comparison\comparison-helper.php:43
+Stack trace:
+#0 C:\xampp\htdocs\demo\wp-content\plugins\shopengine\modules\comparison\route.php(24): ShopEngine\Modules\Comparison\Comparison_Helper::get_html(Array)
+#1 C:\xampp\htdocs\demo\wp-content\plugins\shopengine\base\api.php(39): ShopEngine\Modules\Comparison\Route->get_comparison_table()
+#2 C:\xampp\htdocs\demo\wp-includes\rest-api\class-wp-rest-server.php(1141): ShopEngine\Base\Api->action(Object(WP_REST_Request))
+#3 C:\xampp\htdocs\demo\wp-includes\rest-api\class-wp-rest-server.php(988): WP_REST_Server->respond_to_request(Object(WP_REST_Request), '/shopengine-bui...', Array, NULL)
+#4 C:\xampp\htdocs\demo\wp-includes\rest-api\class-wp-rest-server.php(414): WP_REST_Server->dispatch(Object(WP_REST_Request))
+#5 C:\xampp\htdocs\demo\wp-includes\rest-api.php(386): WP_REST_Server->serve_request('/shopengine-bui...')
+#6 C:\xampp\htdocs\demo\wp-includes\class-wp-hook.php(307): rest_api_loaded(Object(WP))
+#7 C:\xampp\htdocs\demo\wp-includes\class-wp-hook.php(331): WP_Hook->apply_filters(NULL, Array)
+#8 C:\xampp\htdocs\demo\wp-includes\plugin.php(522): WP_Hook->do_action(Array)
+#9 C:\xampp\htdocs\demo\wp-includes\class-wp.php(396): do_action_ref_array('parse_request', Array)
+#10 C:\xampp\htdocs\demo\wp-includes\class-wp.php(758): WP->parse_request('')
+#11 C:\xampp\htdocs\demo\wp-includes\functions.php(1310): WP->main('')
+#12 C:\xampp\htdocs\demo\wp-blog-header.php(16): wp()
+#13 C:\xampp\htdocs\demo\index.php(17): require('C:\\xampp\\htdocs...')
+#14 {main}
+  thrown in C:\xampp\htdocs\demo\wp-content\plugins\shopengine\modules\comparison\comparison-helper.php on line 43
+

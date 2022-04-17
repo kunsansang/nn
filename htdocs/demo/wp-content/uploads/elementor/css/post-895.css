@@ -1,0 +1,54 @@
+.elementor-895 .elementor-element.elementor-element-30f92635 .elementor-heading-title{color:#566C25;font-family:"Roboto", Sans-serif, roboto;font-size:24px;font-weight:600;-webkit-text-stroke-color:#000;stroke:#000;}.elementor-895 .elementor-element.elementor-element-30f92635 > .elementor-widget-container{margin:0px 0px 0px 0px;}.elementor-895 .elementor-element.elementor-element-a8b8edb > .elementor-element-populated{padding:0px 0px 0px 0px;}.elementor-895 .elementor-element.elementor-element-24b9ad4b .elementor-heading-title{color:var( --e-global-color-b1705de );}.elementor-895 .elementor-element.elementor-element-24b9ad4b > .elementor-widget-container{padding:12px 0px 12px 0px;}.elementor-895 .elementor-element.elementor-element-24b9ad4b{width:auto;max-width:auto;}.elementor-895 .elementor-element.elementor-element-65ee26b .elementor-posts-container .elementor-post__thumbnail{padding-bottom:calc( 0.66 * 100% );}.elementor-895 .elementor-element.elementor-element-65ee26b:after{content:"0.66";}.elementor-895 .elementor-element.elementor-element-65ee26b .elementor-post__thumbnail__link{width:100%;}.elementor-895 .elementor-element.elementor-element-65ee26b .elementor-post__meta-data span + span:before{content:"///";}.elementor-895 .elementor-element.elementor-element-65ee26b{--grid-column-gap:30px;--grid-row-gap:35px;}.elementor-895 .elementor-element.elementor-element-65ee26b.elementor-posts--thumbnail-left .elementor-post__thumbnail__link{margin-right:20px;}.elementor-895 .elementor-element.elementor-element-65ee26b.elementor-posts--thumbnail-right .elementor-post__thumbnail__link{margin-left:20px;}.elementor-895 .elementor-element.elementor-element-65ee26b.elementor-posts--thumbnail-top .elementor-post__thumbnail__link{margin-bottom:20px;}.elementor-895 .elementor-element.elementor-element-4939dc9 > .elementor-element-populated{padding:0px 0px 0px 0px;}.elementor-895 .elementor-element.elementor-element-9824479 .elementor-heading-title{color:var( --e-global-color-b1705de );}.elementor-895 .elementor-element.elementor-element-9824479 > .elementor-widget-container{padding:12px 0px 12px 0px;}.elementor-895 .elementor-element.elementor-element-9824479{width:auto;max-width:auto;}.elementor-895 .elementor-element.elementor-element-814aa6a .elementor-posts-container .elementor-post__thumbnail{padding-bottom:calc( 0.66 * 100% );}.elementor-895 .elementor-element.elementor-element-814aa6a:after{content:"0.66";}.elementor-895 .elementor-element.elementor-element-814aa6a .elementor-post__thumbnail__link{width:100%;}.elementor-895 .elementor-element.elementor-element-814aa6a .elementor-post__meta-data span + span:before{content:"///";}.elementor-895 .elementor-element.elementor-element-814aa6a{--grid-column-gap:30px;--grid-row-gap:35px;}.elementor-895 .elementor-element.elementor-element-814aa6a.elementor-posts--thumbnail-left .elementor-post__thumbnail__link{margin-right:20px;}.elementor-895 .elementor-element.elementor-element-814aa6a.elementor-posts--thumbnail-right .elementor-post__thumbnail__link{margin-left:20px;}.elementor-895 .elementor-element.elementor-element-814aa6a.elementor-posts--thumbnail-top .elementor-post__thumbnail__link{margin-bottom:20px;}@media(max-width:1024px){.elementor-bc-flex-widget .elementor-895 .elementor-element.elementor-element-a111d7f.elementor-column .elementor-widget-wrap{align-items:flex-start;}.elementor-895 .elementor-element.elementor-element-a111d7f.elementor-column.elementor-element[data-element_type="column"] > .elementor-widget-wrap.elementor-element-populated{align-content:flex-start;align-items:flex-start;}}@media(max-width:767px){.elementor-895 .elementor-element.elementor-element-65ee26b .elementor-posts-container .elementor-post__thumbnail{padding-bottom:calc( 0.5 * 100% );}.elementor-895 .elementor-element.elementor-element-65ee26b:after{content:"0.5";}.elementor-895 .elementor-element.elementor-element-65ee26b .elementor-post__thumbnail__link{width:100%;}.elementor-895 .elementor-element.elementor-element-814aa6a .elementor-posts-container .elementor-post__thumbnail{padding-bottom:calc( 0.5 * 100% );}.elementor-895 .elementor-element.elementor-element-814aa6a:after{content:"0.5";}.elementor-895 .elementor-element.elementor-element-814aa6a .elementor-post__thumbnail__link{width:100%;}}@media(min-width:768px){.elementor-895 .elementor-element.elementor-element-a111d7f{width:25%;}.elementor-895 .elementor-element.elementor-element-54a55990{width:75%;}}@media(max-width:1024px) and (min-width:768px){.elementor-895 .elementor-element.elementor-element-a111d7f{width:38%;}.elementor-895 .elementor-element.elementor-element-54a55990{width:62%;}}/* Start custom CSS for wp-widget-categories, class: .elementor-element-50b814e */.postCategories h5{
+       line-height: 40px;
+    height: 40px;
+    display: block;
+    overflow: hidden;
+    color: #fff;
+    padding-left: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: #3ab54a;
+    text-transform: uppercase;
+}
+.postCategories a {
+    display: block;
+   color: #333;
+   padding: 4px 0px 4px 16px;
+   font-weight:600;
+   font-size: 14px
+}/* End custom CSS */
+/* Start custom CSS for heading, class: .elementor-element-24b9ad4b */.postCategories h5{
+       line-height: 40px;
+    height: 40px;
+    display: block;
+    overflow: hidden;
+    color: #fff;
+    padding: 0 12px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: #3ab54a;
+    text-transform: uppercase;
+}/* End custom CSS */
+/* Start custom CSS for heading, class: .elementor-element-9824479 */.postCategories h5{
+       line-height: 40px;
+    height: 40px;
+    display: block;
+    overflow: hidden;
+    color: #fff;
+    padding: 0 12px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: #3ab54a;
+    text-transform: uppercase;
+}/* End custom CSS */
+/* Start custom CSS */.pt0 {
+    padding-top: 0;
+}
+
+.pb0 {
+    padding-bottom: 0;
+}
+
+.m0 {
+    margin: 0;
+}/* End custom CSS */
