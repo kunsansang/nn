@@ -1,0 +1,32 @@
+.elementor-1810 .elementor-element.elementor-element-28cf37e6{padding:0px 0px 16px 0px;}.elementor-1810 .elementor-element.elementor-element-30a72dad > .elementor-element-populated{margin:0px 0px 0px 0px;--e-column-margin-right:0px;--e-column-margin-left:0px;padding:0px 0px 0px 0px;}.elementor-1810 .elementor-element.elementor-element-378134b4 .elementor-heading-title{color:#566C25;}.elementor-1810 .elementor-element.elementor-element-378134b4 > .elementor-widget-container{margin:0px 0px 0px 0px;}.elementor-1810 .elementor-element.elementor-element-d57b722 > .elementor-container > .elementor-column > .elementor-widget-wrap{align-content:center;align-items:center;}.elementor-1810 .elementor-element.elementor-element-a3ae84a{width:auto;max-width:auto;}.elementor-1810 .elementor-element.elementor-element-48d1358 .elementor-icon-list-icon{width:14px;}.elementor-1810 .elementor-element.elementor-element-48d1358 .elementor-icon-list-icon i{font-size:14px;}.elementor-1810 .elementor-element.elementor-element-48d1358 .elementor-icon-list-icon svg{width:14px;}.elementor-1810 .elementor-element.elementor-element-fa9c7ce{color:var( --e-global-color-5b63002 );font-family:"Roboto", Sans-serif, roboto;font-size:22px;font-weight:600;}.elementor-1810 .elementor-element.elementor-element-5b62c19 .elementor-posts-container .elementor-post__thumbnail{padding-bottom:calc( 0.66 * 100% );}.elementor-1810 .elementor-element.elementor-element-5b62c19:after{content:"0.66";}.elementor-1810 .elementor-element.elementor-element-5b62c19 .elementor-post__thumbnail__link{width:100%;}.elementor-1810 .elementor-element.elementor-element-5b62c19 .elementor-post__meta-data span + span:before{content:"///";}.elementor-1810 .elementor-element.elementor-element-5b62c19{--grid-column-gap:30px;--grid-row-gap:35px;}.elementor-1810 .elementor-element.elementor-element-5b62c19.elementor-posts--thumbnail-left .elementor-post__thumbnail__link{margin-right:20px;}.elementor-1810 .elementor-element.elementor-element-5b62c19.elementor-posts--thumbnail-right .elementor-post__thumbnail__link{margin-left:20px;}.elementor-1810 .elementor-element.elementor-element-5b62c19.elementor-posts--thumbnail-top .elementor-post__thumbnail__link{margin-bottom:20px;}@media(min-width:768px){.elementor-1810 .elementor-element.elementor-element-5be73d76{width:25%;}.elementor-1810 .elementor-element.elementor-element-745896ac{width:75%;}.elementor-1810 .elementor-element.elementor-element-e7ee672{width:25%;}.elementor-1810 .elementor-element.elementor-element-b4ad98e{width:75%;}}@media(max-width:1024px) and (min-width:768px){.elementor-1810 .elementor-element.elementor-element-5be73d76{width:38%;}.elementor-1810 .elementor-element.elementor-element-745896ac{width:62%;}}@media(max-width:1024px){.elementor-bc-flex-widget .elementor-1810 .elementor-element.elementor-element-5be73d76.elementor-column .elementor-widget-wrap{align-items:flex-start;}.elementor-1810 .elementor-element.elementor-element-5be73d76.elementor-column.elementor-element[data-element_type="column"] > .elementor-widget-wrap.elementor-element-populated{align-content:flex-start;align-items:flex-start;}}@media(max-width:767px){.elementor-1810 .elementor-element.elementor-element-5b62c19 .elementor-posts-container .elementor-post__thumbnail{padding-bottom:calc( 0.5 * 100% );}.elementor-1810 .elementor-element.elementor-element-5b62c19:after{content:"0.5";}.elementor-1810 .elementor-element.elementor-element-5b62c19 .elementor-post__thumbnail__link{width:100%;}}/* Start custom CSS for wp-widget-categories, class: .elementor-element-52877c6 */.postCategories h5{
+       line-height: 40px;
+    height: 40px;
+    display: block;
+    overflow: hidden;
+    color: #fff;
+    padding-left: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: #3ab54a;
+    text-transform: uppercase;
+}
+
+.postCategories li a {
+ display: block;
+    padding: 6px 0px 6px 22px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 14px;
+    color: #333;
+}/* End custom CSS */
+/* Start custom CSS */.pt0 {
+    padding-top: 0;
+}
+
+.pb0 {
+    padding-bottom: 0;
+}
+
+.m0 {
+    margin: 0;
+}/* End custom CSS */

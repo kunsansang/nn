@@ -1,0 +1,30 @@
+.elementor-2017 .elementor-element.elementor-element-16bdd8e9 .elementor-heading-title{color:var( --e-global-color-5b63002 );}.elementor-2017 .elementor-element.elementor-element-2aa34250 .elementor-posts-container .elementor-post__thumbnail{padding-bottom:calc( 1 * 100% );}.elementor-2017 .elementor-element.elementor-element-2aa34250:after{content:"1";}.elementor-2017 .elementor-element.elementor-element-2aa34250 .elementor-post__thumbnail__link{width:100%;}.elementor-2017 .elementor-element.elementor-element-2aa34250{--grid-column-gap:30px;}.elementor-2017 .elementor-element.elementor-element-2aa34250.elementor-posts--thumbnail-left .elementor-post__thumbnail__link{margin-right:8px;}.elementor-2017 .elementor-element.elementor-element-2aa34250.elementor-posts--thumbnail-right .elementor-post__thumbnail__link{margin-left:8px;}.elementor-2017 .elementor-element.elementor-element-2aa34250.elementor-posts--thumbnail-top .elementor-post__thumbnail__link{margin-bottom:8px;}.elementor-2017 .elementor-element.elementor-element-2aa34250 .elementor-post__title, .elementor-2017 .elementor-element.elementor-element-2aa34250 .elementor-post__title a{color:var( --e-global-color-primary );font-family:"Roboto", Sans-serif, roboto;font-size:14px;font-weight:600;line-height:17px;}.elementor-2017 .elementor-element.elementor-element-2aa34250 .elementor-pagination{text-align:center;}body:not(.rtl) .elementor-2017 .elementor-element.elementor-element-2aa34250 .elementor-pagination .page-numbers:not(:first-child){margin-left:calc( 10px/2 );}body:not(.rtl) .elementor-2017 .elementor-element.elementor-element-2aa34250 .elementor-pagination .page-numbers:not(:last-child){margin-right:calc( 10px/2 );}body.rtl .elementor-2017 .elementor-element.elementor-element-2aa34250 .elementor-pagination .page-numbers:not(:first-child){margin-right:calc( 10px/2 );}body.rtl .elementor-2017 .elementor-element.elementor-element-2aa34250 .elementor-pagination .page-numbers:not(:last-child){margin-left:calc( 10px/2 );}@media(max-width:1024px){.elementor-bc-flex-widget .elementor-2017 .elementor-element.elementor-element-5a210911.elementor-column .elementor-widget-wrap{align-items:flex-start;}.elementor-2017 .elementor-element.elementor-element-5a210911.elementor-column.elementor-element[data-element_type="column"] > .elementor-widget-wrap.elementor-element-populated{align-content:flex-start;align-items:flex-start;}}@media(max-width:767px){.elementor-2017 .elementor-element.elementor-element-2aa34250 .elementor-posts-container .elementor-post__thumbnail{padding-bottom:calc( 0.5 * 100% );}.elementor-2017 .elementor-element.elementor-element-2aa34250:after{content:"0.5";}.elementor-2017 .elementor-element.elementor-element-2aa34250 .elementor-post__thumbnail__link{width:100%;}}@media(min-width:768px){.elementor-2017 .elementor-element.elementor-element-5a210911{width:25%;}.elementor-2017 .elementor-element.elementor-element-43db51aa{width:75%;}}@media(max-width:1024px) and (min-width:768px){.elementor-2017 .elementor-element.elementor-element-5a210911{width:38%;}.elementor-2017 .elementor-element.elementor-element-43db51aa{width:62%;}}/* Start custom CSS for wp-widget-woocommerce_product_categories, class: .elementor-element-22f44ee */.postCategories h5{
+       line-height: 40px;
+    height: 40px;
+    display: block;
+    overflow: hidden;
+    color: #fff;
+    padding-left: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: #3ab54a;
+    text-transform: uppercase;
+}
+.postCategories a {
+    display: block;
+   color: #333;
+   padding: 4px 0px 4px 16px;
+   font-weight:600;
+   font-size: 14px
+}/* End custom CSS */
+/* Start custom CSS */.pt0 {
+    padding-top: 0;
+}
+
+.pb0 {
+    padding-bottom: 0;
+}
+
+.m0 {
+    margin: 0;
+}/* End custom CSS */
