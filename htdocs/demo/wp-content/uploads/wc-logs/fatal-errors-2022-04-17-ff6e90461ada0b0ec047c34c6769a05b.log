@@ -1,2 +1,0 @@
-2022-04-17T03:58:53+00:00 CRITICAL Out of memory (allocated 119537664) (tried to allocate 131072 bytes) in C:\xampp\htdocs\demo\wp-content\plugins\elementor\core\common\modules\ajax\module.php on line 265
-
